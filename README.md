@@ -9,8 +9,12 @@ To get started, make sure you have [Docker installed](https://docs.docker.com/do
 
 Next, navigate in your terminal to the directory you cloned this, and spin up the containers for the web server by running `docker-compose up -d --build site`.
 
-After that completes, follow the steps from the [src/README.md](src/README.md) file to get your Laravel project added in (or create a new blank one).
+After that completes, do one of the following to set up your Laravel project:
 
+a) Either create a `src` directory and clone your project into it, e.g. `git clone git@github.com:hex-digital/my-laravel-project.git src`, or
+b) Use the docker composer container to create a fresh Laravel project in the `src` directory: `mkdir src && docker-compose run --rm composer create-project laravel/laravel .`
+
+### Usage Notes
 Bringing up the Docker Compose network with `site` instead of just using `up`, ensures that only our site's containers are brought up at the start, instead of all of the command containers as well. The following are built for our web server, with their exposed ports detailed:
 
 - **nginx** - `:80`
@@ -78,6 +82,6 @@ That should keep a small info pane open in your terminal (which you can exit wit
 
 ## MailHog
 
-The current version of Laravel (8 as of today) uses MailHog as the default application for testing email sending and general SMTP work during local development. Using the provided Docker Hub image, getting an instance set up and ready is simple and straight-forward. The service is included in the `docker-compose.yml` file, and spins up alongside the webserver and database services.
+The current version of Laravel (9 as of today) uses MailHog as the default application for testing email sending and general SMTP work during local development. Using the provided Docker Hub image, getting an instance set up and ready is simple and straight-forward. The service is included in the `docker-compose.yml` file, and spins up alongside the webserver and database services.
 
 To see the dashboard and view any emails coming through the system, visit [localhost:8025](http://localhost:8025) after running `docker-compose up -d site`.
